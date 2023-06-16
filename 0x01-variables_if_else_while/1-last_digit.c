@@ -3,6 +3,7 @@
 #include <time.h>
 /*program will assign a random number to the variable n */
 
+/* betty style doc for function main goes there */
 int main(void)
 {
 int n;
