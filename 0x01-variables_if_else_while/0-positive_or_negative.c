@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
  * main - Entry point
@@ -9,6 +10,8 @@
 int main(void)
 {
 int n;
+int seed = 1234;
+srand(seed);
 n = rand()% 101;
 if(n > 0)
 printf("%i is positive\n", n);
