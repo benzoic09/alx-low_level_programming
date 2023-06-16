@@ -12,8 +12,8 @@ int main(void)
 int n;
 int seed = 1234;
 srand(seed);
-n = rand()% 101;
-if(n > 0)
+n = rand() % 101;
+if (n > 0)
 printf("%i is positive\n", n);
 else if (n < 0)
 printf("%i is negative\n", n);
