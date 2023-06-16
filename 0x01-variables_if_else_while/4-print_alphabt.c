@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - main block
+ * Print all the letters except q and e
+ * Return: 0
+*/
+
 int main(void)
 {
 char c;
