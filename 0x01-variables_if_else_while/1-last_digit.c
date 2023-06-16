@@ -3,7 +3,11 @@
 #include <time.h>
 /*program will assign a random number to the variable n */
 
-/* betty style doc for function main goes there */
+/**
+ * main - Entry point
+ *
+ * Return: 0 Exit
+ */
 int main(void)
 {
 int n;
