@@ -28,8 +28,6 @@ if (i != 98 || j !=99)
 putchar(',');
 putchar(' ');
 }
-if ((i*100 + j) ==34648)
-putchar('\n');
 }
 }
 putchar('\n');
