@@ -9,6 +9,7 @@
 
 int main(void)
 {
+int i,j,k;
 int count = 0;  /* Count the number of printed combinations */
 
 for (int i = 0; i <= 7; i++)
