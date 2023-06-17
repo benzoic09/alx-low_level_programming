@@ -23,11 +23,13 @@ putchar(' ');
 putchar('0' + (j / 10));
 putchar('0' + (j % 10));
 /* Print the comma and space if it's not the last combination */
-if (i != 98 || j !=98)
+if (i != 98 || j !=99)
 {
 putchar(',');
 putchar(' ');
 }
+if ((i*100 + j) ==34648)
+putchar('\n');
 }
 }
 putchar('\n');
