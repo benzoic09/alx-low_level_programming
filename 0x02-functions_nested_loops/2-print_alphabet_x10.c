@@ -1,17 +1,18 @@
 #include "main.h"
 
 /**
- * main - check the code
- *
- * Return: Always 0.
+ *  function that prints 10 times the alphabet, in lowercase.
+ * Return: always 0
  */
 
-int main(void)
+void print_alphabet_x10(void)
 {
-    print_alphabet();
-	char alp
-		for (alp = 'a'; alp < = 'z'; alp++)
-			_putchar(alp);
-			_putchar('\n');
-			return (0);
+char alp;
+int count = 0;
+while (count++ <= 10)
+{
+for (alp = 'a'; alp <= 'z'; alp++)
+_putchar(alp);
+_putchar('\n');
+}
 }
