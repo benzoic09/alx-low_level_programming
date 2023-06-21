@@ -4,6 +4,7 @@
 /**
  * _abs - main code
  * @int:returns a number
+ * @n: the interger on which to compute
  * function that computes the absolute value of an integer.
  * Return: Always 0.
  */
