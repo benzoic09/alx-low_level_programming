@@ -24,9 +24,9 @@ num3 = num * num2;
 if (num3 <= 9)
 _putchar(' ');
 else
-_putchar((prod / 10) + '0');
+_putchar((num3 / 10) + '0');
 
-_putchar((prod % 10) + '0');
+_putchar((num3 % 10) + '0');
 }
 _putchar('\n');
 }
