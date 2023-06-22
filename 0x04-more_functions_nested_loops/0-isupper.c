@@ -8,20 +8,10 @@
  */
 int _isupper(int c)
 {
+if (c >= 'A' && c <= 'Z')
+return (1);
 
-c = 'A';
-_putchar(c);
-_putchar(':');
-_putchar(' ');
-_putchar('0' + _isupper(c));
-_putchar('\n');
-
-c = 'a';
-_putchar(c);
-_putchar(':');
-_putchar(' ');
-_putchar('0' + _isupper(c));
-_putchar('\n');
-
+else
 return (0);
+
 }
