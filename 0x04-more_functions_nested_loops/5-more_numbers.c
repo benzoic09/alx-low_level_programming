@@ -20,7 +20,7 @@ _putchar('0' + j);
 }
 else
 {
-_putchar('0' + j / 10);
+_putchar('0' + j % 10);
 _putchar('0' + j % 10);
 }
 }
