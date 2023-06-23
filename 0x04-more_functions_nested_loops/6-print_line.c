@@ -2,7 +2,7 @@
 
 /**
  * print_line - check the code
- * @len: length
+ * @n: char to be printed
  *
  * Return: Always 0.
  */
