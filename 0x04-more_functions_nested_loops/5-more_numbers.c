@@ -8,21 +8,26 @@
 
 void more_numbers(void)
 {
-int i, j;
+int i, j, k;
 
-for (i = 0; i < 10; i++)
+int l = 0;
+while (l <= 9)
 {
-for (j = 0; j <= 14; j++)
+for (i = 0; i < 15; i++)
 {
-if (j < 10)
-_putchar('0' + j);
-else
+j = i / 10;
+k = i % 10;
+if (j > 0)
 {
-_putchar('0' + j / 10);
-_putchar('0' + j % 10);
+_putchar(j + '0');
+}
+_putchar(k + '0');
+if (j == 1 && k == 4)
+{
+continue;
 }
 }
-
+l++;
 _putchar('\n');
 }
 }
