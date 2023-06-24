@@ -11,7 +11,7 @@ if (n == INT_MIN)
 {
 _putchar('-');
 _putchar('2');
-n = 147483648;  // -INT_MIN without overflow
+n = 147483648;
 }
 
 if (n < 0)
