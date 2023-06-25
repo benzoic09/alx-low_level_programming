@@ -3,7 +3,7 @@
 
 /**
  * print_to_98 - main block
- *  function that prints the sign of a number.
+ *  @n: number input by user
  * Return: always 1
  */
 
@@ -17,10 +17,8 @@ printf("%d", i);
 
 if (i != 98)
 {
-_putchar(", ");
+printf(", ");
 }
 }
-_putchar("\n");
-
-return (0);
+_putchar('\n');
 }
