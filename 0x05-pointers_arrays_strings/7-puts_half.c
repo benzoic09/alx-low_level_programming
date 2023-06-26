@@ -14,9 +14,9 @@ int a, n, i;
 i = 0;
 
 	for (a = 0; str[a] != '\0'; a++)
-		longi++;
+		i++;
 
-n = (longi / 2);
+n = (i / 2);
 
 	if ((i % 2) == 1)
 		n = ((i + 1) / 2);
