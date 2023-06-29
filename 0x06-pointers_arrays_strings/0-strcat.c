@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * *strcat - function name
+ * *_strcat - function name
  *@dest: - first string
  *@src: second string
  * Return: always o
