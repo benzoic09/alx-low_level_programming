@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * reverse_array - main function 
+ * reverse_array - main function
  * @a: content 1
  * @n: content 2
  */
