@@ -7,18 +7,18 @@
  * Return: always o
  */
 
-char *strcat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
 	char *p = dest;
 
 	while (*p)
 	p++;
-	while (*srt)
+	while (*src)
 	{
-		*p = *srt;
+		*p = *src;
 		p++;
-		srt;
+		src++;
 	}
 	*p = '\0';
 	return (dest);
-
+}
