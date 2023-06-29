@@ -8,15 +8,13 @@
  *
  * Return: Pointer to the resulting string dest
  */
-char *_strncpy(char *dest, char *src, int n)
+
+int _strcmp(char *s1, char *s2)
 {
-	int i;
+while (*s1 && (*s1 == *s2)) {
+s1++;
+s2++;
+}
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-
-	for (; i < n; i++)
-		dest[i] = '\0';
-
-	return (dest);
+return *(unsigned char*)s1 - *(unsigned char*)s2;
 }
