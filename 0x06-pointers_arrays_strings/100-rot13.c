@@ -6,19 +6,27 @@
  *
  * Return: A pointer to the encoded string.
  */
-
 char *rot13(char *s)
 {
+int i;
 char *ptr = s;
+char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
 while (*s != '\0')
 {
-if ((*s >= 'a' && *s <= 'm') || (*s >= 'A' && *s <= 'M'))
-*s += 13;
-else if ((*s >= 'n' && *s <= 'z') || (*s >= 'N' && *s <= 'Z'))
-*s -= 13;
+for (i = 0; i < 52; i++)
+{
+if (*s == alphabet[i])
+{
+*s = rot13[i];
+break;
+}
+}
+
 s++;
 }
 
 return (ptr);
 }
+
