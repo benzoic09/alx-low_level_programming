@@ -3,6 +3,16 @@
 /**
  * is_palindrome - Checks if a string is a palindrome.
  * @s: The string to check.
+ * @length: The length of the string.
+ *
+ * Return: 1 if the string is a palindrome, 0 otherwise.
+ */
+
+int is_palindrome_helper(char *s, int length);
+
+/**
+ * is_palindrome - Checks if a string is a palindrome.
+ * @s: The string to check.
  *
  * Return: 1 if the string is a palindrome, 0 otherwise.
  */
