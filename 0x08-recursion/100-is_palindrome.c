@@ -19,14 +19,14 @@ int is_palindrome_helper(char *s, int length);
 
 int is_palindrome(char *s)
 {
+int length = _strlen_recursion(s);
+
 if (*s == '\0')
 {
 return (1);
 }
 
-int length = _strlen_recursion(s);
 return (is_palindrome_helper(s, length));
-}
 
 /**
  * is_palindrome_helper - Helper function for is_palindrome.
