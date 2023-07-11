@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd>
 
 /**
  * *create_array - array of chars, and initializes it with a specific char.
