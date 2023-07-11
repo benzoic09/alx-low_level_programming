@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -14,7 +15,8 @@ char *argstostr(int ac, char **av)
 if (ac == 0 || av == NULL)
 return (NULL);
 
-int i, j;
+int i;
+int j;
 int total_length = 0;
 char *result;
 char *temp;
