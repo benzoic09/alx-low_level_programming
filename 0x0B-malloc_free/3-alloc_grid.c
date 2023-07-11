@@ -33,7 +33,7 @@ return (NULL);
 }
 
 for (j = 0; j < width; j++)
-grid[j] = 0;
+grid[i][j] = 0;
 }
 
 return (grid);
