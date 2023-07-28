@@ -29,8 +29,8 @@ free(new_node);
 return (NULL);
 
 new_node->len = len;
-new_node->next = *head;
 *head = new_node;
+new_node->next = *head;
 
 return (*head);
 }
