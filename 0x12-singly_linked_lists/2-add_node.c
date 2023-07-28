@@ -11,8 +11,6 @@
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-if (str == NULL)
-return (NULL);
 
 list_t *current = *head;
 while (current != NULL)
