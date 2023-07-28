@@ -20,11 +20,7 @@ len++;
 new_node = malloc(sizeof(list_t));
 
 new_node->str = strdup(str);
-if (new_node->str == NULL)
-{
-free(new_node);
-return (NULL);
-}
+
 
 new_node->next = NULL;
 new_node->len = len;
