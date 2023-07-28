@@ -19,6 +19,7 @@ len++;
 
 new_node = (list_t *)malloc(sizeof(list_t));
 if (new_node == NULL)
+	free(new_node);
 return (NULL);
 
 new_node->str = strdup(str);
