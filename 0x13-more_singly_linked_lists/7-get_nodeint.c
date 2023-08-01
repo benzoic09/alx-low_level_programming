@@ -20,4 +20,4 @@ listint_t *get_nodeint_at_index(listint_t *head, unassigned int index)
 		curent = current->next;
 	}
 	return (NULL)
-
+}
