@@ -7,9 +7,9 @@
  * Return: Pointer to the nth node, or NULL if the node does not exist.
  */
 
-listint_t *get_nodeint_at_index(listint_t *head, unassigned int index)
+listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unassigned int count = 0;
+	unsigned int count = 0;
 	listint_t *current = head;
 
 	while (current != NULL)
@@ -19,5 +19,5 @@ listint_t *get_nodeint_at_index(listint_t *head, unassigned int index)
 		count++;
 		current = current->next;
 	}
-	return (NULL)
+	return (NULL);
 }
