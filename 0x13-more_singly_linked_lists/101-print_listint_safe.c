@@ -1,57 +1,80 @@
 #include "lists.h"
 
+size_t looped_listint_y(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 /**
- * print_listint_safe - Prints a listint_t linked list safely.
- * @head: Pointer to the head of the list.
- * Return: The number of nodes in the list.
- */
+  * looped_listint_y -  counts unique nodes
+  * @head: head the node
+  * Return: number of unique nodes
+  */
+size_t looped_listint_y(const listint_t *head)
+{
+	const listint_t *slow, *fast;
+	size_t x = 1;
+
+	if (head == NULL || head->next == NULL)
+		return (0);
+	slow = head->next;
+	fast = (head->next)->next;
+	while (fast)
+	{
+		if (slow == fast)
+		{
+			slow = head;
+			while (slow != fast)
+			{
+				x++;
+				slow = slow->next;
+				fast = fast->next;
+			}
+
+			slow = slow->next;
+			while (slow != fast)
+			{
+				x++;
+				slow = slow->next;
+			}
+			return (x);
+		}
+			slow = slow->next;
+			fast = (fast->next)->next;
+	}
+
+	return (0);
+}
+
+
+/**
+  * print_listint_safe - function that prints a listint_t linked list
+  * @head: the head of the linked list
+  * Return: the number of nodes in the list
+  */
 size_t print_listint_safe(const listint_t *head)
 {
-const listint_t *slow = head, *fast = head;
-size_t node_count = 0, loop_node_count = 0, i = 0;
-int loop_detected = 0;
+	size_t x, index = 0;
 
-while (slow && fast && fast->next)
-{
-slow = slow->next;
-fast = fast->next->next;
-node_count++;
+	x = looped_listint_y(head);
 
-if (slow == fast)
-{
-loop_node_count = 1;
-loop_detected = 1;
-slow = slow->next;
-while (slow != fast)
-{
-loop_node_count++;
-slow = slow->next;
-}
-break;
-}
-}
+	if (x == 0)
+	{
+		while (head != NULL)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+			index++;
+		}
+	}
+	else
+	{
+		while (index < x)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+			index++;
+		}
 
-if (loop_detected)
-{
-printf("List contains a loop\n");
-for (i = 0; i < loop_node_count; i++)
-{
-printf("[%p] %d\n", (void *)head, head->n);
-head = head->next;
-}
-printf("-> [%p] %d\n", (void *)head, head->n);
-printf("Total number of nodes: %lu\n", node_count);
-return (node_count);
-}
-else
-{
-while (head)
-{
-printf("[%p] %d\n", (void *)head, head->n);
-head = head->next;
-}
-printf("Total number of nodes: %lu\n", node_count);
-return (node_count);
-}
-}
+		printf("-> [%p] %d\n", (void *)head, head->n);
+	}
 
+	return (x);
+}
