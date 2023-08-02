@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stddef.h>
 
 size_t looped_listint_z(const listint_t *head);
 size_t print_listint_safe(const listint_t *head);
