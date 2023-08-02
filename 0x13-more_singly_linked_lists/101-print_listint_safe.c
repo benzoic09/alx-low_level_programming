@@ -1,13 +1,13 @@
 #include "lists.h"
 
-size_t looped_listint_y(const listint_t *head);
+size_t looped_listint_z(const listint_t *head);
 size_t print_listint_safe(const listint_t *head);
 /**
-  * looped_listint_y -  counts unique nodes
+  * looped_listint_z -  counts unique nodes
   * @head: head the node
   * Return: number of unique nodes
   */
-size_t looped_listint_y(const listint_t *head)
+size_t looped_listint_z(const listint_t *head)
 {
 	const listint_t *slow, *fast;
 	size_t x = 1;
@@ -74,6 +74,7 @@ size_t print_listint_safe(const listint_t *head)
 		}
 
 		printf("-> [%p] %d\n", (void *)head, head->n);
+		exit(98);
 	}
 
 	return (x);
