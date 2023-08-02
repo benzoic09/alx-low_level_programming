@@ -15,7 +15,7 @@ size_t looped_listint_z(const listint_t *head)
 
 	if (head == NULL || head->next == NULL)
 		return (98);
-	
+
 	slow = head->next;
 	fast = (head->next)->next;
 	while (fast)
