@@ -53,7 +53,7 @@ size_t print_listint_safe(const listint_t *head)
 {
 	size_t x, index = 0;
 
-	x = looped_listint_y(head);
+	x = looped_listint_z(head);
 
 	if (x == 0)
 	{
