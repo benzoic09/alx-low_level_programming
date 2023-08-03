@@ -1,16 +1,17 @@
 #include "main.h"
 
 /**
- * get_bit - Returns the value of a bit at a given index.
- * @n: The number to extract the bit from.
- * @index: The index of the bit to retrieve (starting from 0).
- * Return: The value of the bit at the given index or -1 if an error occurred.
+ * set_bit - Sets the value of a bit to 1 at a given index.
+ * @n: Pointer to the number whose bit we want to set.
+ * @index: The index of the bit to set (starting from 0).
+ * Return: 1 if it worked, or -1 if an error occurred.
  */
-
-int get_bit(unsigned long int n, unsigned int index)
+int set_bit(unsigned long int *n, unsigned int index)
 {
-	if (index >= sizeof(n) * 8) /* Check if the index is out of range */
+	if (index >= sizeof(*n) * 8) /* Check if the index is out of range */
 		return (-1);
 
-	return ((n >> index) & 1); /* Shift right to the index and extract the bit */
+	*n |= (1UL << index); /* Use bitwise OR to set the bit at the given index */
+
+	return (1);
 }
