@@ -16,7 +16,8 @@ dprintf(STDERR_FILENO, "%s\n", message);
 exit(exit_code);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 int fd_from, fd_to;
 ssize_t n_read, n_write;
 char buffer[BUFFER_SIZE];
@@ -38,7 +39,8 @@ close(fd_from);
 exit(99);
 }
 
-while ((n_read = read(fd_from, buffer, BUFFER_SIZE)) > 0) {
+while ((n_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+{
 n_write = write(fd_to, buffer, n_read);
 if (n_write != n_read) {
 dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
@@ -65,5 +67,5 @@ dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 exit(100);
 }
 
-return 0;
+return (0);
 }
