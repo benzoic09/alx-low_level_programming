@@ -4,15 +4,15 @@
 #define BUFFER_SIZE 1024
 
 /**
- * error_exit -prints the provided error message followed by a newline.
+ * error_exit - prints the provided error message followed by a newline.
  * 
- * Return: a
+ * Return: N/A
  */
 
 void error_exit(const char *message, int exit_code)
 {
-dprintf(STDERR_FILENO, "%s\n", message);
-exit(exit_code);
+    dprintf(STDERR_FILENO, "%s\n", message);
+    exit(exit_code);
 }
 
 int main(int argc, char *argv[])
@@ -75,3 +75,4 @@ exit(100);
 
 return (0);
 }
+
