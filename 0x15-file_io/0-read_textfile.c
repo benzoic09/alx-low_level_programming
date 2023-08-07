@@ -5,7 +5,6 @@
  * @filename: text file being read
  * @letters: number of letters to be read
  * Return: w- actual number of bytes read and printed
- *        0 when function fails or filename is NULL.
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
@@ -35,22 +34,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	_read = fread(buffer, 1, letters, file);
 
-	if (_read == -1)
+	fclose(file);
+
+	if (_read <= 0)
 	{
 		free(buffer);
-		fclose(file);
 		return (0);
 	}
 
 		 _write = write(STDOUT_FILENO, buffer, _read);
 
-			if (_write != _read)
-			{
-				free(buffer);
-				fclose(file);
-				return (_write);
-			}
 		free(buffer);
-		fclose(file);
+		if (_write != _read)
+			return (0);
+
 		return (_write);
 	}
