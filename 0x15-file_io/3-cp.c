@@ -41,6 +41,14 @@ close(fd_from);
 exit(99);
 }
 
+if (fchmod(fd_to, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH) == -1)
+{
+dprintf(STDERR_FILENO, "Error: Can't set permissions for %s\n", argv[2]);
+close(fd_from);
+close(fd_to);
+exit(99);
+}
+
 while ((n_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 {
 n_write = write(fd_to, buffer, n_read);
