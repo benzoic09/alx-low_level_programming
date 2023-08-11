@@ -1,4 +1,5 @@
 #include "main.h"
+#include <fcntl.h>
 
 #define BUFFER_SIZE 1024
 
@@ -30,7 +31,7 @@ int main(int argc, char *argv[])
 		error_exit("Usage: copy_program source_file destination_file", 97);
 	}
 
-	fd_source = open(source, O_RDONLY);
+	fd_source = open(argv[1], O_RDONLY);
 	if (fd_source == -1)
 	return (-1);
 	{
@@ -38,8 +39,8 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	fd_destination = open(destination, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fd_to == -1)
+	fd_destination = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	if (fd_destination == -1)
 	return (-1);
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
