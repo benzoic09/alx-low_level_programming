@@ -1,6 +1,4 @@
 #include "main.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 #define BUFFER_SIZE 1024
 
@@ -54,6 +52,7 @@ int main(int argc, char *argv[])
 		n_written = write(fd_destination, buffer, n_read);
 		if (n_written != n_read)
 		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			close(fd_source);
 			close(fd_destination);
 			return (-1);
