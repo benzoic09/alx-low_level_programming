@@ -49,21 +49,34 @@ int main(int argc, char *argv[])
 
 	while ((n_read = read(fd_source, buffer, BUFFER_SIZE)) > 0)
 	{
-		n_written = write(fd_destination, buffer, n_read);
-		if (n_written != n_read)
+		n_write = write(fd_destination, buffer, n_read);
+		if (n_write != n_read)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			close(fd_source);
 			close(fd_destination);
-			return (-1);
+			exit(99);
 		}
 	}
 
 	if (n_read == -1)
 	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		close(fd_source);
 		close(fd_destination);
-		return (-1);
+		exit(98);
+	}
+
+	if (close(fd_source) == -1)
+	{
+        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+        exit(100);
+	}
+
+	if (close(fd_destination) == -1)
+	{
+        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+        exit(100);
 	}
 
 	close(fd_source);
