@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * pint_binary - prints the binary rep of a no.
+ * print_binary - prints the binary rep of a no.
  * @n: - No to convert and print binary
  *
  * return - binay repreesantation
