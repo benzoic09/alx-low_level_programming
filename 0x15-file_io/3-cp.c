@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		error_exit("usage: copy_program source_file destination_file", 97);
+		error_exit("Usage: cp file_from file_to", '\n');
+		exit(97);
 	}
 
 	fd_from = open(argv[1], O_RDONLY);
@@ -53,14 +54,6 @@ int main(int argc, char *argv[])
 	{
 		
 		_write = write(fd_to, buffer, _read);
-		if (_read == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			close(fd_from);
-			close(fd_to);
-			exit(98);
-		}
-
 		if (_write != _read)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
