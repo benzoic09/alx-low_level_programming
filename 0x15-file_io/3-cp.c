@@ -10,7 +10,7 @@
 
 void error_exit(const char *message, int exit_code)
 {
-	dprintf(STDER_FILENO, "%s\n", message);
+	dprintf(STDERR_FILENO, "%s\n", message);
 	exit(exit_code);
 }
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 
 	while ((_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		_write = write(fd_to, buffer, n_read);
+		_write = write(fd_to, buffer, _read);
 		if (_write != _read)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
