@@ -51,6 +51,14 @@ int main(int argc, char *argv[])
 
 	while ((_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
+		if (_read == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			close(fd_from);
+			close(fd_to);
+			exit(98);
+		}
+		
 		_write = write(fd_to, buffer, _read);
 		if (_write != _read)
 		{
