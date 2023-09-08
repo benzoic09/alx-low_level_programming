@@ -74,15 +74,15 @@ void close_file(int fd)
  */
 void copy_file(const char *src_file, const char *dest_file)
 {
-	int fd_from = open_file(src_file, O_RDONLY,0);
-	int fd_to = open_file(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	int fd_from = open_file(src_file, O_RDONLY, 0);
+	int fd_to = open_file(dest_file, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	char buffer[BUFFER_SIZE];
 	ssize_t _read, _write;
 
 	while ((_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		_write = write(fd_to, buffer, _read);
-		if (_write != _read)
+		if (_write == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 			close_file(fd_from);
