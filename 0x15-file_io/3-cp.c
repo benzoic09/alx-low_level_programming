@@ -83,7 +83,7 @@ void copy_file(const char *src_file, const char *dest_file)
 	while ((_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		_write = write(fd_to, buffer, _read);
-		if (_write == -1)
+		if (_write != _read)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
 			close_file(fd_from);
