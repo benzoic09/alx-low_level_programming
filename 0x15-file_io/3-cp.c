@@ -1,13 +1,34 @@
 #include "main.h"
 #define BUFFER_SIZE 1024
 
-/**
- * error_exit - Prints provided error message followed by a \n and exits.
- * @message: error message to pint
- * @exit_code:the exit code to use when exit
- *
- */
+void error_exit(const char *message, int exit_code);
+int open_file(const char *filename, int flags, mode_t mode);
+void close_file(int fd);
+void copy_file(const char *src_file, const char *dest_file);
 
+/**
+ * main - Main program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array containing the command-line arguments.
+ * Return: 0 on success, 97 on argument count mismatch, exit code.
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		error_exit("Usage: cp file_from file_to", 97);
+	}
+
+	copy_file(argv[1], argv[2]);
+
+	return (0);
+}
+
+/**
+ * error_exit - Prints provided error message followed by a newline and exits.
+ * @message: Error message to print.
+ * @exit_code: The exit code to use when exiting.
+ */
 void error_exit(const char *message, int exit_code)
 {
 	dprintf(STDERR_FILENO, "%s\n", message);
@@ -15,74 +36,69 @@ void error_exit(const char *message, int exit_code)
 }
 
 /**
- * main - main progam
- * @argc: - No. of CMD line arguments
- * @argv:  -array containing the arguments
- *
- * Return: 0 on success, 97 on argument count mismatch, eixt code.
+ * open_file - Opens a file with the specified mode.
+ * @filename: The name of the file to open.
+ * @flags:  behavior of the open system call when opening a file.
+ * @mode: The mode in which to open the file.
+ * Return: The file descriptor of the opened file.
  */
-
-int main(int argc, char *argv[])
+int open_file(const char *filename, int flags, mode_t mode)
 {
-	int fd_from, fd_to;
-	ssize_t _read, _write;
-	char buffer[BUFFER_SIZE];
+	int fd = open(filename, flags, mode);
 
-	if (argc != 3)
+	if (fd == -1)
 	{
-		error_exit("Usage: cp file_from file_to", '\n');
-		exit(97);
-	}
-
-	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(fd_from);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(98);
 	}
+	return (fd);
+}
 
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fd_to == -1)
+/**
+ * close_file - Closes the specified file descriptors.
+ * @fd: The file descriptor to close for the source file.
+ */
+void close_file(int fd)
+{
+	if (close(fd) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		close(fd_from);
-		exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
 	}
+}
+
+/**
+ * copy_file - Copies the contents of the source file to the destination file.
+ * @src_file: The file descriptor of the source file.
+ * @dest_file: The file descriptor of the destination file.
+ */
+void copy_file(const char *src_file, const char *dest_file)
+{
+	int fd_from = open_file(src_file, O_RDONLY,0);
+	int fd_to = open_file(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	char buffer[BUFFER_SIZE];
+	ssize_t _read, _write;
 
 	while ((_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		
 		_write = write(fd_to, buffer, _read);
 		if (_write != _read)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(fd_from);
-			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_file);
+			close_file(fd_from);
+			close_file(fd_to);
 			exit(99);
 		}
 	}
 
 	if (_read == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(fd_from);
-		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src_file);
+		close_file(fd_from);
+		close_file(fd_to);
 		exit(98);
 	}
 
-	if (close(fd_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
-	}
-
-	if (close(fd_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
-		exit(100);
-	}
-
-	return (0);
+	close_file(fd_from);
+	close_file(fd_to);
 }
-
