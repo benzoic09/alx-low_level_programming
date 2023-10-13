@@ -1,4 +1,6 @@
 #include "lists.h"
+dlistint_t *add_dnodeint(dlistint_t **head, const int n);
+
 
 /**
  * insert_dnodeint_at_index - Inserts node at given point in dlistint_t list.
