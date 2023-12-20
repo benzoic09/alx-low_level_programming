@@ -2,17 +2,16 @@ CC = gcc
 NAME = school
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
+CFLASS = Wall -Werror -Wextra -pedantic
 
-all $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+all: m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean: 
-	@/bin/rm -f $(NAME)
+	$(RM) *~ $(NAME)
 
 oclean: 
-	@/bin/rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
