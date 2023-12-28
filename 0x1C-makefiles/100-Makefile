@@ -2,7 +2,7 @@ CC = gcc
 NAME = school
 SRC = main.c school.c
 OBJ = $(patsubst %.c,%.o,$(SRC))
-CFLASS = Wall -Werror -Wextra -pedantic
+CFLASS = -Wall -Werror -Wextra -pedantic
 
 all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
