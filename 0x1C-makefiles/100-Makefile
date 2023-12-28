@@ -1,18 +1,20 @@
 #!/usr/bin/env make
+
 CC = gcc
-NAME = school
-SRC = main.c school.c
+SRC = school.c main.c
 OBJ = $(SRC:.c=.o)
-CFLASS = -Wall -Werror -Wextra -pedantic
-.PHONY : all clean oclean fclean re
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+.PHONY: all  oclean fclean re clean
 
 all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-clean: 
+clean:
 	$(RM) *~ $(NAME)
 
-oclean: 
+oclean:
 	$(RM) $(OBJ)
 
 fclean: clean oclean
