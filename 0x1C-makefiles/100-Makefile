@@ -1,3 +1,4 @@
+#!/usr/bin/env make
 CC = gcc
 NAME = school
 SRC = main.c school.c
@@ -16,4 +17,4 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean all
+re: fclean all
