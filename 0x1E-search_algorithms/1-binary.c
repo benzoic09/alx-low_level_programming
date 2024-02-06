@@ -17,23 +17,24 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 
-	 while (left <= right)
-	 {
+	while (left <= righti)
+	{
 		mid = left + (right - left) / 2;
-		
-		printf("Searching subarray [%lu:%lu]: ", (unsigned long)left, (unsigned long)right);
-	 	for (i = left; i <= right; i++)
-	 	{	
-			printf("%d ", array[i]);
-	 	}
-	 	printf("\n");
 
-	 	if (array[mid] == value)
-			return mid;
-	 	else if (array[mid] < value)
+		printf("Searching subarray [%lu:%lu]: ", (
+					unsigned long)left, (unsigned long)right);
+		for (i = left; i <= right; i++)
+		{
+			printf("%d ", array[i]);
+		}
+		printf("\n");
+
+		if (array[mid] == value)
+			return (mid);
+		else if (array[mid] < value)
 			left = mid + 1;
-	 	else
+		else
 			right = mid - 1;
-	 }
-	 return (-1);
+	}
+	return (-1);
 }
